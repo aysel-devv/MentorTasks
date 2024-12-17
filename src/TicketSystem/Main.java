@@ -1,9 +1,6 @@
 package TicketSystem;
 
-import java.util.Objects;
 import java.util.Scanner;
-import java.util.Stack;
-import java.util.TreeMap;
 import java.util.regex.Pattern;
 
 public class Main {
@@ -58,47 +55,43 @@ public class Main {
 
         int numberOfTickets = 0;
 
-        while(numberOfTickets==0){
+        while (numberOfTickets == 0) {
             System.out.println("Enter number of tickets: 1, 2, 3, 4 or 5");
-            int input1=scanner.nextInt();
-            if (input1>0 && input1<=5){
-                numberOfTickets=input1;
-            }else{
+            int input1 = scanner.nextInt();
+            if (input1 > 0 && input1 <= 5) {
+                numberOfTickets = input1;
+            } else {
                 System.out.println("Invalid option!");
             }
         }
 
-        String emailAddress=null;
+        String emailAddress = null;
 
-        while(emailAddress==null){
+        while (emailAddress == null) {
             System.out.println("Enter an email: ");
-            String email1=scanner.next();
+            String email1 = scanner.next();
 
-            if (emailAddressPattern.matcher(email1).matches()){
-                emailAddress=email1;
-            }else{
+            if (emailAddressPattern.matcher(email1).matches()) {
+                emailAddress = email1;
+            } else {
                 System.out.println("Invalid email address!");
             }
 
         }
 
-        double price= destination.getPrice()*numberOfTickets;
-        switch (seatPreference){
-            case WINDOW -> price+=50;
-            case AISLE -> price+=25;
+        double price = destination.getPrice() * numberOfTickets;
+        switch (seatPreference) {
+            case WINDOW -> price += 50;
+            case AISLE -> price += 25;
         }
 
-        switch (flightClass){
-            case PREMIUM_ECONOMY -> price*=1.5;
-            case BUSINESS -> price*=2;
-            case FIRST_CLASS -> price*=3;
+        switch (flightClass) {
+            case PREMIUM_ECONOMY -> price *= 1.5;
+            case BUSINESS -> price *= 2;
+            case FIRST_CLASS -> price *= 3;
 
         }
-
-
-        System.out.println("Price: "+price);
-
-
-
+        
+        System.out.println("Price: " + price);
     }
 }
